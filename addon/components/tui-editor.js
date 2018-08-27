@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { observer } from '@ember/object';
-import { all } from 'rsvp';
+// import { all } from 'rsvp';
 import { task } from 'ember-concurrency';
 import layout from '../templates/components/tui-editor';
 import Editor from 'tui-editor';
@@ -19,7 +19,7 @@ export default Component.extend({
     useDefaultHTMLSanitizer: true,
     //codeBlockLanguages: null,
     usageStatistics: false,
-    toolbarItems: [
+    toolbarItems: Object.freeze([
         'heading',
         'bold',
         'italic',
@@ -40,7 +40,7 @@ export default Component.extend({
         'divider',
         'code',
         'codeblock'
-    ],
+    ]),
     hideModeSwitch: false,
 
     /*importStyle: task(function *() {
@@ -68,7 +68,15 @@ export default Component.extend({
             //codeBlockLanguages: this.codeBlockLanguages,
             usageStatistics: this.usageStatistics,
             toolbarItems: this.toolbarItems,
-            hideModeSwitch: this.hideModeSwitch
+            hideModeSwitch: this.hideModeSwitch,
+
+            events: {
+                load: () => this.onLoad(),
+                change: () => this.onChange(),
+                stateChange: () => this.onStateChange(),
+                focus: () => this.onFocus(),
+                blur: () => this.onBlur()
+            },
         });
 
         this.set('editor', editor);
@@ -77,4 +85,34 @@ export default Component.extend({
     valueChanged: observer('value', function() {
         this.editor.setValue(this.value);
     }),
+
+    onLoad() {
+        if (this.get('load')) {
+            this.load();
+        }
+    },
+
+    onChange() {
+        if (this.get('change')) {
+            this.change(this.editor.getValue());
+        }
+    },
+
+    onStateChange() {
+        if (this.get('stateChange')) {
+            this.stateChange();
+        }
+    },
+
+    onFocus() {
+        if (this.get('focus')) {
+            this.focus();
+        }
+    },
+
+    onBlur() {
+        if (this.get('blur')) {
+            this.blur();
+        }
+    }
 });
