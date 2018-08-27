@@ -1,7 +1,7 @@
 ember-tui-editor
 ==============================================================================
 
-[Short description of the addon.]
+Use [TOAST UI Editor](https://github.com/nhnent/tui.editor) WYSIWYG markdown editor in Ember.
 
 Installation
 ------------------------------------------------------------------------------
@@ -14,7 +14,9 @@ ember install ember-tui-editor
 Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+```hbs
+{{tui-editor value="# Hello World" change=(action 'onChange')}}
+```
 
 
 Contributing
