@@ -1,13 +1,20 @@
 {
   "name": "ember-tui-editor",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "description": "Use TOAST UI markdown editor in Ember.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember",
+    "markdown",
+    "toast ui",
+    "wysiwyg"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evocount/ember-tui-editor"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "Till Theato <till.theato@evocount.de>",
   "directories": {
     "doc": "doc",
     "test": "tests"
