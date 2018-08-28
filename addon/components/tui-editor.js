@@ -85,7 +85,7 @@ export default Component.extend({
     }).on('didInsertElement'),
 
     valueChanged: observer('value', function() {
-        if (this.editor.getValue() === this.value) {
+        if (this.editor.getValue && this.editor.getValue() === this.value) {
             return;
         }
 

@@ -1,8 +1,15 @@
 <h2 id="title">Welcome to Ember</h2>
 
 {{tui-editor
-    value="# Hello World"
+    value=content
+    change=(action (mut content))
     previewStyle="vertical"
 }}
+
+<p>
+    <pre>{{content}}</pre>
+</p>
+
+{{tui-editor value=content viewer=true}}
 
 {{outlet}}
