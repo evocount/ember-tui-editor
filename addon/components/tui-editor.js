@@ -85,6 +85,10 @@ export default Component.extend({
     }).on('didInsertElement'),
 
     valueChanged: observer('value', function() {
+        if (this.editor.getValue() === this.value) {
+            return;
+        }
+
         this.editor.setValue(this.value);
     }),
 
