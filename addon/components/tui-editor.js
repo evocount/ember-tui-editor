@@ -42,6 +42,7 @@ export default Component.extend({
         'codeblock'
     ]),
     hideModeSwitch: false,
+    viewer: false,
 
     /*importStyle: task(function *() {
         yield all([
@@ -55,7 +56,8 @@ export default Component.extend({
     setupTask: task(function *() {
         //let Editor = yield import('tui-editor');
 
-        let editor = new Editor({
+        let editor = Editor.factory({
+            viewer: this.viewer,
             el: this.element,
             height: this.height,
             minHeight: this.minHeight,
