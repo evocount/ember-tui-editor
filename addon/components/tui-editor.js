@@ -13,7 +13,7 @@ export default Component.extend({
     minHeight: '200px',
     value: '',
     previewStyle: 'tab',
-    initialEditType: 'markdown',
+    editType: 'markdown',
     language: 'en_US',
     useCommandShortcut: true,
     useDefaultHTMLSanitizer: true,
@@ -61,7 +61,7 @@ export default Component.extend({
             minHeight: this.minHeight,
             initialValue: this.value,
             previewStyle: this.previewStyle,
-            initialEditType: this.initialEditType,
+            initialEditType: this.editType,
             language: this.language,
             useCommandShortcut: this.useCommandShortcut,
             useDefaultHTMLSanitizer: this.useDefaultHTMLSanitizer,
@@ -85,6 +85,35 @@ export default Component.extend({
     valueChanged: observer('value', function() {
         this.editor.setValue(this.value);
     }),
+
+    heightChanged: observer('height', function() {
+        this.editor.height(this.height);
+    }),
+
+    minHeightChanged: observer('minHeight', function() {
+        this.editor.minHeight(this.minHeight);
+    }),
+
+    previewStyleChanged: observer('previewStyle', function() {
+        this.editor.changePreviewStyle(this.previewStyle);
+    }),
+
+    editTypeChanged: observer('editType', function() {
+        this.editor.changeMode(this.editType);
+    }),
+
+    /*
+    TODO this is quite buggy
+    parameterChanged: observer(
+            'language',
+            'useCommandShortcut',
+            'useDefaultHTMLSanitizer',
+            'toolbarItems.[]',
+            'hideModeSwitch',
+            function() {
+        this.editor.remove();
+        this.setupTask.perform();
+    }),*/
 
     onLoad() {
         if (this.get('load')) {
