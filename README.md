@@ -19,6 +19,25 @@ Usage
 ```
 
 
+### Properties
+
+For a list of possible values have a look at the [TOAST UI docs](https://nhnent.github.io/tui.editor/api/latest/ToastUIEditor.html).
+
+| Property | Is Bound? | Default |
+| --- | :---: | --- |
+| `height` | x | `300px` |
+| `minHeight` | x | `200px` |
+| `value` | x |  |
+| `previewStyle` | x | `tab` |
+| `editType` | x | `markdown` |
+| `language` |  | `en_US` |
+| `useCommandShortcut` |   | `true` |
+| `useDefaultHTMLSanitizer` |   | `true` |
+| `usageStatistics` |   | `false` |
+| `toolbarItems` |   | `['heading', 'bold', 'italic', 'strike', 'divider', 'hr', 'quote', 'divider', 'ul', 'ol', 'task', 'indent', 'outdent', 'divider', 'table', 'image', 'link', 'divider', 'code', 'codeblock']` |
+| `hideModeSwitch` |   | `false` |
+
+
 Contributing
 ------------------------------------------------------------------------------
 
