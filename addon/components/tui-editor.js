@@ -73,11 +73,11 @@ export default Component.extend({
             hideModeSwitch: this.hideModeSwitch,
 
             events: {
-                load: () => this.onLoad(),
-                change: () => this.onChange(),
-                stateChange: () => this.onStateChange(),
-                focus: () => this.onFocus(),
-                blur: () => this.onBlur()
+                load: () => this.onLoadWrapper(),
+                change: () => this.onChangeWrapper(),
+                stateChange: () => this.onStateChangeWrapper(),
+                focus: () => this.onFocusWrapper(),
+                blur: () => this.onBlurWrapper()
             },
         });
 
@@ -121,33 +121,33 @@ export default Component.extend({
         this.setupTask.perform();
     }),*/
 
-    onLoad() {
-        if (this.get('load')) {
-            this.load();
+    onLoadWrapper() {
+        if (this.get('onLoad')) {
+            this.onLoad();
         }
     },
 
-    onChange() {
-        if (this.get('change')) {
-            this.change(this.editor.getValue());
+    onChangeWrapper() {
+        if (this.get('onChange')) {
+            this.onChange(this.editor.getValue());
         }
     },
 
-    onStateChange() {
-        if (this.get('stateChange')) {
-            this.stateChange();
+    onStateChangeWrapper() {
+        if (this.get('onStateChange')) {
+            this.onStateChange();
         }
     },
 
-    onFocus() {
-        if (this.get('focus')) {
-            this.focus();
+    onFocusWrapper() {
+        if (this.get('onFocus')) {
+            this.onFocus();
         }
     },
 
-    onBlur() {
-        if (this.get('blur')) {
-            this.blur();
+    onBlurWrapper() {
+        if (this.get('onBlur')) {
+            this.onBlur();
         }
     }
 });

@@ -43,11 +43,11 @@ For a list of possible values have a look at the [TOAST UI docs](https://nhnent.
 
 | Event | Description |
 | --- | --- |
-| `load` | Emitted when editor is fully loaded |
-| `change` | Emitted when content changed |
-| `stateChange` | Emitted when format changed by cursor position |
-| `focus` | Emitted when editor gets focus |
-| `blur` | Emitted when editor looses focus |
+| `onLoad` | Emitted when editor is fully loaded |
+| `onChange` | Emitted when content changed |
+| `onStateChange` | Emitted when format changed by cursor position |
+| `onFocus` | Emitted when editor gets focus |
+| `onBlur` | Emitted when editor looses focus |
 
 Contributing
 ------------------------------------------------------------------------------
