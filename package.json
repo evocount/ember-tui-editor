@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "ember-auto-import": "^1.2.13",
-    "ember-cli-babel": "^6.6.0",
+    "ember-cli-babel": "^6.17.0",
     "ember-cli-htmlbars": "^2.0.1",
     "tui-editor": "^1.2.6"
   },
