@@ -54,12 +54,13 @@ Contributing
 
 ### Installation
 
-* `git clone <repository-url>`
+* `git clone git@github.com:evocount/ember-tui-editor.git`
 * `cd ember-tui-editor`
 * `npm install`
 
 ### Linting
 
+* `npm run lint:hbs`
 * `npm run lint:js`
 * `npm run lint:js -- --fix`
 
