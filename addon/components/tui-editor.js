@@ -1,7 +1,5 @@
 import Component from '@ember/component';
 import { observer } from '@ember/object';
-// import { all } from 'rsvp';
-import { task } from 'ember-concurrency';
 import layout from '../templates/components/tui-editor';
 import Editor from 'tui-editor';
 
@@ -53,7 +51,13 @@ export default Component.extend({
         ]);
     }).on('init'),*/
 
-    setupTask: task(function *() {
+    didInsertElement() {
+        this._super(...arguments);
+
+        this.setupEditor();
+    },
+
+    setupEditor() {
         //let Editor = yield import('tui-editor');
 
         let editor = Editor.factory({
@@ -82,7 +86,7 @@ export default Component.extend({
         });
 
         this.set('editor', editor);
-    }).on('didInsertElement'),
+    },
 
     valueChanged: observer('value', function() {
         if (this.editor.getValue && this.editor.getValue() === this.value) {
@@ -118,7 +122,7 @@ export default Component.extend({
             'hideModeSwitch',
             function() {
         this.editor.remove();
-        this.setupTask.perform();
+        this.setupEditor();
     }),*/
 
     onLoadWrapper() {
