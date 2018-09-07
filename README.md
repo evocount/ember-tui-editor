@@ -1,18 +1,16 @@
-ember-tui-editor
-==============================================================================
+# ember-tui-editor
 
-Use [TOAST UI Editor](https://github.com/nhnent/tui.editor) WYSIWYG markdown editor in Ember.
+Use [TOAST UI Editor](https://github.com/nhnent/tui.editor) WYSIWYG markdown editor in Ember. ([Demo](https://evocount.github.io/ember-tui-editor/))
 
-Installation
-------------------------------------------------------------------------------
+## Installation
+
 
 ```
 ember install ember-tui-editor
 ```
 
 
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 ```hbs
 {{tui-editor value="# Hello World" change=(action 'onChange')}}
@@ -49,8 +47,7 @@ For a list of possible values have a look at the [TOAST UI docs](https://nhnent.
 | `onFocus` | Emitted when editor gets focus |
 | `onBlur` | Emitted when editor looses focus |
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 ### Installation
 
@@ -77,7 +74,6 @@ Contributing
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
