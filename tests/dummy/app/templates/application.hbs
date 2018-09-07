@@ -1,15 +1,56 @@
-<h2 id="title">Welcome to Ember</h2>
+<div class="main">
+    <h2 id="title"><a href="https://github.com/evocount/ember-tui-editor">Ember-tui-editor</a> Demo</h2>
 
-{{tui-editor
-    value=content
-    onChange=(action (mut content))
-    previewStyle="vertical"
-}}
+    {{code-snippet name="tui-editor.hbs"}}
 
-<p>
-    <pre>{{content}}</pre>
-</p>
+    {{tui-editor
+        height=height
+        minHeight=minHeight
+        value=value
+        previewStyle=previewStyle
+        editType=editType
+        onChange=(action (mut value))
+    }}
 
-{{tui-editor value=content viewer=true}}
+    <form>
+        <div>
+            <label for="height">Height: </label>
+            {{input value=height id="height"}}
+        </div>
 
-{{outlet}}
+        <div>
+            <label for="minHeight">Min Height: </label>
+            {{input value=minHeight id="minHeight"}}
+        </div>
+
+        <div>
+            <label for="previewStyle">Preview style: </label>
+            {{#power-select
+                options=previewStyles
+                selected=previewStyle
+                onchange=(action (mut previewStyle))
+                searchEnabled=false as |item|}}
+                  {{item}}
+            {{/power-select}}
+        </div>
+
+        <div>
+            <label for="editType">Edit type: </label>
+            {{#power-select
+                id="editType"
+                options=editTypes
+                selected=editType
+                onchange=(action (mut editType))
+                searchEnabled=false as |item|}}
+                  {{item}}
+            {{/power-select}}
+        </div>
+
+        <div>
+            <label for="value">Value: </label>
+            {{textarea value=value rows="10" id="value"}}
+        </div>
+    </form>
+
+    {{!-- {{tui-editor value=value viewer=true}} --}}
+</div>

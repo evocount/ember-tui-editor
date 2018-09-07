@@ -1,0 +1,44 @@
+.main {
+  margin: 16px auto;
+  padding: 8px;
+  max-width: 900px;
+}
+
+pre.hljs {
+  margin-bottom: 32px;
+}
+
+form {
+  margin-top: 16px;
+  padding: 4px;
+}
+
+form > div {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  form > div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+label {
+  display: inline-block;
+  font-weight: bold;
+  width: 180px;
+}
+
+form input,
+textarea,
+.ember-power-select-trigger {
+  min-width: 220px;
+  width: 100%;
+}
+
+.ember-power-select-trigger {
+  display: inline-block;
+}
