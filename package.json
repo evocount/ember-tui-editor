@@ -1,7 +1,7 @@
 {
   "name": "ember-tui-editor",
   "version": "0.0.4",
-  "description": "Use TOAST UI markdown editor in Ember.",
+  "description": "TOAST UI WYSIWYG markdown editor for Ember.",
   "keywords": [
     "ember-addon",
     "ember",

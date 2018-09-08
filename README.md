@@ -1,6 +1,6 @@
 # ember-tui-editor
 
-Use [TOAST UI Editor](https://github.com/nhnent/tui.editor) WYSIWYG markdown editor in Ember. ([Demo](https://evocount.github.io/ember-tui-editor/))
+[TOAST UI](https://github.com/nhnent/tui.editor) WYSIWYG markdown editor for Ember. ([Demo](https://evocount.github.io/ember-tui-editor/))
 
 ## Installation
 
