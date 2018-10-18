@@ -1,56 +1,54 @@
 <div class="main">
-    <h2 id="title"><a href="https://github.com/evocount/ember-tui-editor">Ember-tui-editor</a> Demo</h2>
+  <h2 id="title"><a href="https://github.com/evocount/ember-tui-editor">Ember-tui-editor</a> Demo</h2>
 
-    {{code-snippet name="tui-editor.hbs"}}
+  {{code-snippet name="tui-editor.hbs"}}
 
-    {{tui-editor
-        height=height
-        minHeight=minHeight
-        value=value
-        previewStyle=previewStyle
-        editType=editType
-        onChange=(action (mut value))
-    }}
+  {{tui-editor
+    height=height
+    minHeight=minHeight
+    previewStyle=previewStyle
+    editType=editType
+    value=value
+    onChange=(action (mut value))
+  }}
 
-    <form>
-        <div>
-            <label for="height">Height: </label>
-            {{input value=height id="height"}}
-        </div>
+  <form>
+    <div>
+      <label for="height">Height:</label>
+      {{input value=height id="height"}}
+    </div>
 
-        <div>
-            <label for="minHeight">Min Height: </label>
-            {{input value=minHeight id="minHeight"}}
-        </div>
+    <div>
+      <label for="minHeight">Min Height:</label>
+      {{input value=minHeight id="minHeight"}}
+    </div>
 
-        <div>
-            <label for="previewStyle">Preview style: </label>
-            {{#power-select
-                options=previewStyles
-                selected=previewStyle
-                onchange=(action (mut previewStyle))
-                searchEnabled=false as |item|}}
-                  {{item}}
-            {{/power-select}}
-        </div>
+    <div>
+      <label for="previewStyle">Preview style:</label>
+      {{#power-select
+        options=previewStyles
+        selected=previewStyle
+        onchange=(action (mut previewStyle))
+        searchEnabled=false as |item|}}
+        {{item}}
+      {{/power-select}}
+    </div>
 
-        <div>
-            <label for="editType">Edit type: </label>
-            {{#power-select
-                id="editType"
-                options=editTypes
-                selected=editType
-                onchange=(action (mut editType))
-                searchEnabled=false as |item|}}
-                  {{item}}
-            {{/power-select}}
-        </div>
+    <div>
+      <label for="editType">Edit type: </label>
+      {{#power-select
+        id="editType"
+        options=editTypes
+        selected=editType
+        onchange=(action (mut editType))
+        searchEnabled=false as |item|}}
+        {{item}}
+      {{/power-select}}
+    </div>
 
-        <div>
-            <label for="value">Value: </label>
-            {{textarea value=value rows="10" id="value"}}
-        </div>
-    </form>
-
-    {{!-- {{tui-editor value=value viewer=true}} --}}
+    <div>
+      <label for="value">Value: </label>
+      {{textarea value=value rows="10" id="value"}}
+    </div>
+  </form>
 </div>
