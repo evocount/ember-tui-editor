@@ -26,13 +26,13 @@ You can pass the properties as a hash to `options` using their original names ju
 The following table lists some special properties (bound, different name) only:
 
 | Property | TUI name | Is Bound? | Notes |
-| --- | --- | :---: | --- | --- |
-| `height` |  | x |   |
-| `minHeight` |  | x |   |
+| --- | --- | :---: | --- |
+| `height` |  | x |  |
+| `minHeight` |  | x |  |
 | `value` | `initialValue` | x | Changes do not propagate to `value` ("data down, action up") |
-| `previewStyle` |  | x |   |
-| `editType` | `initialEditType` | x |   |
-| `viewer` |   |   | Do not show editor but markdown viewer only |
+| `previewStyle` |  | x |  |
+| `editType` | `initialEditType` | x |  |
+| `viewer` |  |  | Do not show editor but markdown viewer only |
 
 
 ### Actions
