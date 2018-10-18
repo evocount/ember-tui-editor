@@ -19,22 +19,20 @@ ember install ember-tui-editor
 
 ### Properties
 
-For a list of possible values have a look at the [TOAST UI docs](https://nhnent.github.io/tui.editor/api/latest/ToastUIEditor.html).
+For a list of possible options and their defaults have a look at the [TOAST UI docs](https://nhnent.github.io/tui.editor/api/latest/ToastUIEditor.html#ToastUIEditor).
 
-| Property | Is Bound? | Default | Description |
-| --- | :---: | --- | --- |
-| `height` | x | `300px` |   |
-| `minHeight` | x | `200px` |   |
-| `value` | x |  | Changes do not propagate to `value` ("data down, action up") |
-| `previewStyle` | x | `tab` |   |
-| `editType` | x | `markdown` |   |
-| `language` |  | `en_US` |   |
-| `useCommandShortcut` |   | `true` |   |
-| `useDefaultHTMLSanitizer` |   | `true` |   |
-| `usageStatistics` |   | `false` |   |
-| `toolbarItems` |   | `['heading', 'bold', 'italic', 'strike', 'divider', 'hr', 'quote', 'divider', 'ul', 'ol', 'task', 'indent', 'outdent', 'divider', 'table', 'image', 'link', 'divider', 'code', 'codeblock']` |   |
-| `hideModeSwitch` |   | `false` |   |
-| `viewer` |   | `false` | Do not show editor but markdown viewer only |
+You can pass the properties as a hash to `options` using their original names just as you would when using TUI editor directly. Alternatively set them directly on the component. The later version has the advantage that some properties are bound. However mind the different naming (see table).
+
+The following table lists some special properties (bound, different name) only:
+
+| Property | TUI name | Is Bound? | Notes |
+| --- | --- | :---: | --- | --- |
+| `height` |  | x |   |
+| `minHeight` |  | x |   |
+| `value` | `initialValue` | x | Changes do not propagate to `value` ("data down, action up") |
+| `previewStyle` |  | x |   |
+| `editType` | `initialEditType` | x |   |
+| `viewer` |   |   | Do not show editor but markdown viewer only |
 
 
 ### Actions
