@@ -25,8 +25,11 @@ export default Component.extend({
     this.get('tuiOptions').forEach((o) => {
       let [optionName, ,tuiOption] = o.split(':');
       tuiOption = tuiOption ? tuiOption : optionName;
+      let value = this.get(optionName);
 
-      options[tuiOption] = this.get(optionName);
+      if (value !== undefined) {
+        options[tuiOption] = value;
+      }
     });
 
     return options;
