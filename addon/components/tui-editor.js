@@ -15,7 +15,7 @@ export default Component.extend({
   tuiOptions: Object.freeze([
     'previewStyle:changePreviewStyle', 'editType:changeMode:initialEditType', 'height:height', 'minHeight:minHeight',
     'language', 'useDefaultHTMLSanitizer', 'useCommandShortcut', 'codeBlockLanguages', 'usageStatistics',
-    'toolbarItems', 'hideModeSwitch', 'viewer', 'value:setValue:initialValue'
+    'toolbarItems', 'hideModeSwitch', 'viewer', 'value:setValue:initialValue', 'hooks'
   ]),
 
   // gathers all the options to initialize TUI editor, respecting tuiOptions syntax
