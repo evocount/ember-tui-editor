@@ -79,7 +79,7 @@ export default Component.extend({
           // `value` is a special case because using `setValue`
           // moves the current cursor position so we need to avoid calling it
           // only call it when the editor value is different from the new value we got
-          if (optionName === 'value') {
+          if (optionName === 'value' && this.editor.getValue) {
             let editorValue = this.editor.getValue();
             if (editorValue !== value) {
               this.editor.setValue(value);
