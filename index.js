@@ -3,6 +3,12 @@
 module.exports = {
   name: 'ember-tui-editor',
 
+  options: {
+    babel: {
+      plugins: [ require('ember-auto-import/babel-plugin') ]
+    }
+  },
+
   included(app) {
     this._super.included.apply(this, arguments);
 

@@ -4,7 +4,6 @@ import { assert } from '@ember/debug';
 import { assign } from '@ember/polyfills';
 
 import layout from '../templates/components/tui-editor';
-import Editor from 'tui-editor';
 
 export default Component.extend({
   layout,
@@ -37,8 +36,7 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    this.setupEditor();
-    this.addObservers();
+    this.setupEditor().then(() => this.addObservers());
   },
 
   willDestroyElement() {
@@ -49,18 +47,20 @@ export default Component.extend({
   setupEditor() {
     let options = this.get('options');
 
-    let editor = Editor.factory(assign(options, {
-      el: this.element,
-      events: {
-        load: (...args) => this.eventInvoked('onLoad', ...args),
-        change: (...args) => this.eventInvoked('onChange', this.editor.getValue(), ...args),
-        stateChange: (...args) => this.eventInvoked('onStateChange', ...args),
-        focus: (...args) => this.eventInvoked('onFocus', ...args),
-        blur: (...args) => this.eventInvoked('onBlur', ...args)
-      }
-    }));
-
-    this.set('editor', editor);
+    return import('tui-editor').then(
+      module => this.set('editor', module.default.factory(
+        assign(options, {
+          el: this.element,
+          events: {
+            load: (...args) => this.eventInvoked('onLoad', ...args),
+            change: (...args) => this.eventInvoked('onChange', this.editor.getValue(), ...args),
+            stateChange: (...args) => this.eventInvoked('onStateChange', ...args),
+            focus: (...args) => this.eventInvoked('onFocus', ...args),
+            blur: (...args) => this.eventInvoked('onBlur', ...args)
+          }
+        })
+      ))
+    );
   },
 
   // tests if an `actionName` function exists and calls it with the arguments if so
