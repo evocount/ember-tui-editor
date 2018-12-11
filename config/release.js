@@ -8,7 +8,10 @@ module.exports = {
   // annotation: "Release %@",
   // message: "Bumped version to %@",
   // manifest: [ 'package.json', 'bower.json', 'someconfig.json' ],
-  publish: true,
+
+  // does not work with npm 2fa
+  //publish: true,
+
   // strategy: 'date',
   // format: 'YYYY-MM-DD',
   // timezone: 'America/Los_Angeles',
