@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/ember-tui-editor.svg)](https://badge.fury.io/js/ember-tui-editor)
+
 # ember-tui-editor
 
 [TOAST UI](https://github.com/nhnent/tui.editor) WYSIWYG markdown editor for Ember. ([Demo](https://evocount.github.io/ember-tui-editor/))
