@@ -44,17 +44,14 @@ The following table lists some special properties (bound, different name) only:
 | `onFocus` | Emitted when editor gets focus |
 | `onBlur` | Emitted when editor looses focus |
 
-<<<<<<< HEAD
-## License
-=======
 Contributing
 ------------------------------------------------------------------------------
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
+
 License
 ------------------------------------------------------------------------------
->>>>>>> 471abfc... message
 
 This project is licensed under the [MIT License](LICENSE.md).
