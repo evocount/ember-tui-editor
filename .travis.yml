@@ -57,4 +57,4 @@ before_install:
   - npm --version
 
 script:
-- node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
+  - node_modules/.bin/ember try:one $EMBER_TRY_SCENARIO
