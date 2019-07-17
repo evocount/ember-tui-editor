@@ -1,7 +1,9 @@
 <div class="main">
   <h2 id="title"><a href="https://github.com/evocount/ember-tui-editor">Ember-tui-editor</a> Demo</h2>
 
-  {{code-snippet name="tui-editor.hbs"}}
+  {{#let (get-code-snippet "tui-editor.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
 
   {{tui-editor
     height=height
@@ -25,25 +27,29 @@
 
     <div>
       <label for="previewStyle">Preview style:</label>
-      {{#power-select
-        options=previewStyles
-        selected=previewStyle
-        onchange=(action (mut previewStyle))
-        searchEnabled=false as |item|}}
+      <PowerSelect
+        @options={{previewStyles}}
+        @selected={{previewStyle}}
+        @onChange={{action (mut previewStyle)}}
+        @searchEnabled={{false}}
+        as |item|
+      >
         {{item}}
-      {{/power-select}}
+      </PowerSelect>
     </div>
 
     <div>
       <label for="editType">Edit type: </label>
-      {{#power-select
+      <PowerSelect
         id="editType"
-        options=editTypes
-        selected=editType
-        onchange=(action (mut editType))
-        searchEnabled=false as |item|}}
+        @options={{editTypes}}
+        @selected={{editType}}
+        @onChange={{action (mut editType)}}
+        @searchEnabled={{false}}
+        as |item|
+      >
         {{item}}
-      {{/power-select}}
+      </PowerSelect>
     </div>
 
     <div>
