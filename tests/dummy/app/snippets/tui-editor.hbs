@@ -1,8 +1,8 @@
-{{tui-editor
-    height=height
-    minHeight=minHeight
-    value=value
-    previewStyle=previewStyle
-    editType=editType
-    onChange=(action (mut value))
-}}
+<TuiEditor
+    @height={{height}}
+    @minHeight={{minHeight}}
+    @value={{value}}
+    @previewStyle={{previewStyle}}
+    @editType={{editType}}
+    @onChange={{action (mut value)}}
+/>
