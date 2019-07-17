@@ -14,7 +14,7 @@ ember install ember-tui-editor
 ## Usage
 
 ```hbs
-<TuiEditor @value="# Hello World" @change={{action 'onChange'}} />
+<TuiEditor @value="# Hello World" @onChange={{action 'onChange'}} />
 ```
 
 
