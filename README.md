@@ -20,7 +20,7 @@ ember install ember-tui-editor
 
 ### Properties
 
-For a list of possible options and their defaults have a look at the [TOAST UI docs](https://nhnent.github.io/tui.editor/api/latest/ToastUIEditor.html#ToastUIEditor).
+For a list of possible options and their defaults have a look at the [TOAST UI docs](https://nhn.github.io/tui.editor/api/latest/ToastUIEditor.html#ToastUIEditor).
 
 You can pass the properties as a hash to `options` using their original names just as you would when using TUI editor directly. Alternatively set them directly on the component. The later version has the advantage that some properties are bound. However mind the different naming (see table).
 
