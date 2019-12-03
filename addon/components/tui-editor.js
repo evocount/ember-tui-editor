@@ -103,8 +103,10 @@ export default Component.extend({
       this.get('tuiOptions').forEach((o) => {
         let [optionName] = o.split(':');
 
-        this.removeObserver(optionName, this, this._observers[optionName]);
-        delete this._observers[optionName];
+        if (this._observers[optionName]) {
+          this.removeObserver(optionName, this, this._observers[optionName]);
+          delete this._observers[optionName];
+        }
       });
     }
   }
