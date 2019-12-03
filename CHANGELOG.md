@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - …
 
+## [0.1.6] - 2019-12-03
+### Fixed
+- Only remove existing observers.
+
+### Changed
+- Dependency updates.
+
 ## [0.1.5] - 2019-10-01
 ### Changed
 - Dependency updates.
