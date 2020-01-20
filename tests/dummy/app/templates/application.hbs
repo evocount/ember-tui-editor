@@ -5,32 +5,32 @@
     <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
   {{/let}}
 
-  {{tui-editor
-    height=height
-    minHeight=minHeight
-    previewStyle=previewStyle
-    editType=editType
-    value=value
-    onChange=(action (mut value))
-  }}
+  <TuiEditor
+    @height={{this.height}}
+    @minHeight={{this.minHeight}}
+    @previewStyle={{this.previewStyle}}
+    @editType={{this.editType}}
+    @value={{this.value}}
+    @onChange={{fn (mut this.value)}}
+  />
 
   <form>
     <div>
       <label for="height">Height:</label>
-      {{input value=height id="height"}}
+      <Input @value={{this.height}} @id="height" />
     </div>
 
     <div>
       <label for="minHeight">Min Height:</label>
-      {{input value=minHeight id="minHeight"}}
+      <Input @value={{this.minHeight}} @id="minHeight" />
     </div>
 
     <div>
       <label for="previewStyle">Preview style:</label>
       <PowerSelect
-        @options={{previewStyles}}
-        @selected={{previewStyle}}
-        @onChange={{action (mut previewStyle)}}
+        @options={{this.previewStyles}}
+        @selected={{this.previewStyle}}
+        @onChange={{fn (mut this.previewStyle)}}
         @searchEnabled={{false}}
         as |item|
       >
@@ -42,9 +42,9 @@
       <label for="editType">Edit type: </label>
       <PowerSelect
         id="editType"
-        @options={{editTypes}}
-        @selected={{editType}}
-        @onChange={{action (mut editType)}}
+        @options={{this.editTypes}}
+        @selected={{this.editType}}
+        @onChange={{fn (mut this.editType)}}
         @searchEnabled={{false}}
         as |item|
       >
@@ -54,7 +54,7 @@
 
     <div>
       <label for="value">Value: </label>
-      {{textarea value=value rows="10" id="value"}}
+      <Textarea @value={{this.value}} @rows="10" @id="value" />
     </div>
   </form>
 </div>
