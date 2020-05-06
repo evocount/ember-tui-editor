@@ -13,7 +13,7 @@ export default Component.extend({
   // here we use a syntax like <property>:<method>:<tui option> to update such property (optional)>
   tuiOptions: Object.freeze([
     'previewStyle:changePreviewStyle', 'editType:changeMode:initialEditType', 'height:height', 'minHeight:minHeight',
-    'language', 'useDefaultHTMLSanitizer', 'useCommandShortcut', 'codeBlockLanguages', 'usageStatistics',
+    'language', 'useDefaultHTMLSanitizer', 'useCommandShortcut', 'usageStatistics',
     'toolbarItems', 'hideModeSwitch', 'viewer', 'value:setValue:initialValue', 'hooks'
   ]),
 
@@ -47,13 +47,13 @@ export default Component.extend({
   setupEditor() {
     let options = this.options;
 
-    return import('tui-editor').then(
+    return import('@toast-ui/editor').then(
       module => this.set('editor', module.default.factory(
         assign(options, {
           el: this.element,
           events: {
             load: (...args) => this.eventInvoked('onLoad', ...args),
-            change: (...args) => this.eventInvoked('onChange', this.editor.getValue(), ...args),
+            change: (...args) => this.eventInvoked('onChange', this.editor.getMarkdown(), ...args),
             stateChange: (...args) => this.eventInvoked('onStateChange', ...args),
             focus: (...args) => this.eventInvoked('onFocus', ...args),
             blur: (...args) => this.eventInvoked('onBlur', ...args)
@@ -82,10 +82,10 @@ export default Component.extend({
           // `value` is a special case because using `setValue`
           // moves the current cursor position so we need to avoid calling it
           // only call it when the editor value is different from the new value we got
-          if (optionName === 'value' && this.editor.getValue) {
-            let editorValue = this.editor.getValue();
+          if (optionName === 'value' && this.editor.getMarkdown) {
+            let editorValue = this.editor.getMarkdown();
             if (editorValue !== value) {
-              this.editor.setValue(value);
+              this.editor.setMarkdown(value, false);
             }
           } else {
             assert(`Editor instance should be have a function '${tuiMethod}' but found ${this.editor[tuiMethod]} instead.`, !!this.editor[tuiMethod]);
