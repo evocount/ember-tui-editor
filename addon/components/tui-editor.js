@@ -21,7 +21,7 @@ export default Component.extend({
   options: computed('tuiOptions.[]', function() {
     let options = {};
 
-    this.get('tuiOptions').forEach((o) => {
+    this.tuiOptions.forEach((o) => {
       let [optionName, ,tuiOption] = o.split(':');
       tuiOption = tuiOption ? tuiOption : optionName;
       let value = this.get(optionName);
@@ -45,7 +45,7 @@ export default Component.extend({
   },
 
   setupEditor() {
-    let options = this.get('options');
+    let options = this.options;
 
     return import('tui-editor').then(
       module => this.set('editor', module.default.factory(
@@ -72,7 +72,7 @@ export default Component.extend({
 
   addObservers() {
     this._observers = {};
-    this.get('tuiOptions').forEach((o) => {
+    this.tuiOptions.forEach((o) => {
       let [optionName, tuiMethod] = o.split(':');
 
       if (tuiMethod) {
@@ -100,7 +100,7 @@ export default Component.extend({
 
   removeObservers() {
     if (this._observers) {
-      this.get('tuiOptions').forEach((o) => {
+      this.tuiOptions.forEach((o) => {
         let [optionName] = o.split(':');
 
         if (this._observers[optionName]) {
