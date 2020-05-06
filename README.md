@@ -4,6 +4,11 @@
 
 [TOAST UI](https://github.com/nhnent/tui.editor) WYSIWYG markdown editor for Ember. ([Demo](https://evocount.github.io/ember-tui-editor/))
 
+## Compatibility
+* Ember.js v3.12 or above
+* Ember CLI v2.13 or above
+* Node.js v10 or above
+
 ## Installation
 
 ```
