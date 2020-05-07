@@ -53,12 +53,12 @@ The following table lists some special properties (bound, different name) only:
 
 To avoid having to bundling every locale, a blueprint is provided to aid with dynamic importing of tui editor locales:
 
-`ember generate tui-editor-locale-importer fr-FR de en-US`
+`ember generate tui-editor-locale-importer fr-fr de-de`
 
 will generate a helper named `tui-editor-locale` to be used like this:
 
 ```hbs
-{{#let (await (tui-editor-locale "de")) as |lang|}}
+{{#let (await (tui-editor-locale "de-de")) as |lang|}}
   {{#if lang}}
     <TuiEditor @value="# Hello World" @onChange={{action 'onChange'}} @language="de" />
   {{/if}}
