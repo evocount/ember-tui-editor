@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - …
 
+## [1.0.0] - 2020-05-29
+### Changed
+- Update to tui-editor v2
+
+### Changed
+- Dependency updates
+
 ## [0.1.6] - 2019-12-03
 ### Fixed
 - Only remove existing observers.
