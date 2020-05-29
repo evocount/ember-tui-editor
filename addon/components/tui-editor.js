@@ -1,27 +1,29 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { computed, action } from '@ember/object';
 import { assert } from '@ember/debug';
 import { assign } from '@ember/polyfills';
+import { tagName, layout } from '@ember-decorators/component';
 
-import layout from '../templates/components/tui-editor';
+import template from 'ember-tui-editor/templates/components/tui-editor';
+import importLocale from 'ember-tui-editor/utils/load-locale-file';
 
-export default Component.extend({
-  layout,
-
-  value: '',
+@tagName('')
+@layout(template)
+class TuiEditor extends Component {
 
   // here we use a syntax like <property>:<method>:<tui option> to update such property (optional)>
-  tuiOptions: Object.freeze([
+  tuiOptions = [
     'previewStyle:changePreviewStyle', 'editType:changeMode:initialEditType', 'height:height', 'minHeight:minHeight',
     'language', 'useDefaultHTMLSanitizer', 'useCommandShortcut', 'usageStatistics',
     'toolbarItems', 'hideModeSwitch', 'viewer', 'value:setMarkdown:initialValue', 'hooks'
-  ]),
+  ];
 
   // gathers all the options to initialize TUI editor, respecting tuiOptions syntax
-  options: computed('tuiOptions.[]', function() {
+  @computed('tuiOptions.[]')
+  get options() {
     let options = {};
 
-    this.tuiOptions.forEach((o) => {
+    for (let o of this.tuiOptions) {
       let [optionName, ,tuiOption] = o.split(':');
       tuiOption = tuiOption ? tuiOption : optionName;
       let value = this.get(optionName);
@@ -29,50 +31,45 @@ export default Component.extend({
       if (value !== undefined) {
         options[tuiOption] = value;
       }
-    });
+    }
 
     return options;
-  }),
+  }
 
-  didInsertElement() {
-    this._super(...arguments);
-    this.setupEditor().then(() => this.addObservers());
-  },
+  @action
+  async setupEditor(element) {
+    await importLocale(this.language);
+    let module = await import('@toast-ui/editor');
 
-  willDestroyElement() {
-    this._super(...arguments);
-    this.removeObservers();
-  },
-
-  setupEditor() {
-    let options = this.options;
-
-    return import('@toast-ui/editor').then(
-      module => this.set('editor', module.default.factory(
-        assign(options, {
-          el: this.element,
-          events: {
-            load: (...args) => this.eventInvoked('onLoad', ...args),
-            change: (...args) => this.eventInvoked('onChange', this.editor.getMarkdown(), ...args),
-            stateChange: (...args) => this.eventInvoked('onStateChange', ...args),
-            focus: (...args) => this.eventInvoked('onFocus', ...args),
-            blur: (...args) => this.eventInvoked('onBlur', ...args)
-          }
-        })
-      ))
+    let editor = module.default.factory(
+      assign(this.options, {
+        el: element,
+        events: {
+          load: (...args) => this.eventInvoked('onLoad', ...args),
+          change: (...args) => this.eventInvoked('onChange', this.editor.getMarkdown(), ...args),
+          stateChange: (...args) => this.eventInvoked('onStateChange', ...args),
+          focus: (...args) => this.eventInvoked('onFocus', ...args),
+          blur: (...args) => this.eventInvoked('onBlur', ...args)
+        }
+      })
     );
-  },
+
+    this.set('editor', editor);
+
+    this.addObservers();
+  }
 
   // tests if an `actionName` function exists and calls it with the arguments if so
   eventInvoked(actionName, ...args) {
     if (this.get(actionName)) {
       this.get(actionName)(...args);
     }
-  },
+  }
 
   addObservers() {
     this._observers = {};
-    this.tuiOptions.forEach((o) => {
+
+    for (let o of this.tuiOptions) {
       let [optionName, tuiMethod] = o.split(':');
 
       if (tuiMethod) {
@@ -93,21 +90,29 @@ export default Component.extend({
           }
         };
 
+        // eslint-disable-next-line ember/no-observers
         this.addObserver(optionName, this, this._observers[optionName]);
       }
-    });
-  },
+    }
+  }
+
+  @action
+  destroyEditor() {
+    this.removeObservers();
+  }
 
   removeObservers() {
     if (this._observers) {
-      this.tuiOptions.forEach((o) => {
+      for (let o of this.tuiOptions) {
         let [optionName] = o.split(':');
 
         if (this._observers[optionName]) {
           this.removeObserver(optionName, this, this._observers[optionName]);
           delete this._observers[optionName];
         }
-      });
+      }
     }
   }
-});
+}
+
+export default TuiEditor;

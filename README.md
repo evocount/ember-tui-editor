@@ -38,6 +38,7 @@ The following table lists some special properties (bound, different name) only:
 | `previewStyle` |                   |     x     |                                                              |
 | `editType`     | `initialEditType` |     x     |                                                              |
 | `viewer`       |                   |           | Do not show editor but markdown viewer only                  |
+| `language`     |                   |           | This loads the appropriate locale file automatically         |
 
 ### Actions
 
@@ -51,19 +52,7 @@ The following table lists some special properties (bound, different name) only:
 
 ### i18n
 
-To avoid having to bundling every locale, a blueprint is provided to aid with dynamic importing of tui editor locales:
-
-`ember generate tui-editor-locale-importer fr-fr de-de`
-
-will generate a helper named `tui-editor-locale` to be used like this:
-
-```hbs
-{{#let (await (tui-editor-locale "de-de")) as |lang|}}
-  {{#if lang}}
-    <TuiEditor @value="# Hello World" @onChange={{action 'onChange'}} @language="de" />
-  {{/if}}
-{{/let}}
-```
+Based on the `@language` argument you pass in, ember-tui-editor will automatically load the corresponding locale file.
 
 For a list of all available locales check [here](https://github.com/nhn/tui.editor/blob/master/apps/editor/docs/i18n.md#supported-languages).
 
