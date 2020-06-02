@@ -10,12 +10,22 @@ import importLocale from 'ember-tui-editor/utils/load-locale-file';
 @tagName('')
 @layout(template)
 class TuiEditor extends Component {
-
   // here we use a syntax like <property>:<method>:<tui option> to update such property (optional)>
   tuiOptions = [
-    'previewStyle:changePreviewStyle', 'editType:changeMode:initialEditType', 'height:height', 'minHeight:minHeight',
-    'language', 'useDefaultHTMLSanitizer', 'useCommandShortcut', 'usageStatistics',
-    'toolbarItems', 'hideModeSwitch', 'viewer', 'value:setMarkdown:initialValue', 'hooks'
+    'previewStyle:changePreviewStyle',
+    'editType:changeMode:initialEditType',
+    'height:height',
+    'minHeight:minHeight',
+    'language',
+    'useDefaultHTMLSanitizer',
+    'useCommandShortcut',
+    'usageStatistics',
+    'toolbarItems',
+    'hideModeSwitch',
+    'viewer',
+    'value:setMarkdown:initialValue',
+    'hooks',
+    'plugins',
   ];
 
   // gathers all the options to initialize TUI editor, respecting tuiOptions syntax
@@ -24,7 +34,7 @@ class TuiEditor extends Component {
     let options = {};
 
     for (let o of this.tuiOptions) {
-      let [optionName, ,tuiOption] = o.split(':');
+      let [optionName, , tuiOption] = o.split(':');
       tuiOption = tuiOption ? tuiOption : optionName;
       let value = this.get(optionName);
 
@@ -46,11 +56,12 @@ class TuiEditor extends Component {
         el: element,
         events: {
           load: (...args) => this.eventInvoked('onLoad', ...args),
-          change: (...args) => this.eventInvoked('onChange', this.editor.getMarkdown(), ...args),
+          change: (...args) =>
+            this.eventInvoked('onChange', this.editor.getMarkdown(), ...args),
           stateChange: (...args) => this.eventInvoked('onStateChange', ...args),
           focus: (...args) => this.eventInvoked('onFocus', ...args),
-          blur: (...args) => this.eventInvoked('onBlur', ...args)
-        }
+          blur: (...args) => this.eventInvoked('onBlur', ...args),
+        },
       })
     );
 
@@ -73,7 +84,7 @@ class TuiEditor extends Component {
       let [optionName, tuiMethod] = o.split(':');
 
       if (tuiMethod) {
-        this._observers[optionName] = function() {
+        this._observers[optionName] = function () {
           let value = this.get(optionName);
 
           // `value` is a special case because using `setValue`
@@ -85,7 +96,10 @@ class TuiEditor extends Component {
               this.editor.setMarkdown(value, false);
             }
           } else {
-            assert(`Editor instance should be have a function '${tuiMethod}' but found ${this.editor[tuiMethod]} instead.`, !!this.editor[tuiMethod]);
+            assert(
+              `Editor instance should be have a function '${tuiMethod}' but found ${this.editor[tuiMethod]} instead.`,
+              !!this.editor[tuiMethod]
+            );
             this.editor[tuiMethod].call(this.editor, value);
           }
         };

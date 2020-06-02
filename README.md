@@ -19,7 +19,10 @@ ember install ember-tui-editor
 ## Usage
 
 ```hbs
-<TuiEditor @value="# Hello World" @onChange={{action 'onChange'}} />
+<TuiEditor
+  @value="# Hello World"
+  @onChange={{this.onChange}}
+/>
 ```
 
 ### Properties
@@ -55,6 +58,28 @@ The following table lists some special properties (bound, different name) only:
 Based on the `@language` argument you pass in, ember-tui-editor will automatically load the corresponding locale file.
 
 For a list of all available locales check [here](https://github.com/nhn/tui.editor/blob/master/apps/editor/docs/i18n.md#supported-languages).
+
+### Plugins
+
+A list of plugins can be passed to `@plugins` (just as they would be passed to vanilla TOAST UI editor). Import is not handled by this addon and has to happen in app.
+
+```js
+import chart from '@toast-ui/editor-plugin-chart';
+
+export default MyComponent extends Component {
+  // ...
+  editorPlugins = [chart];
+  //..
+}
+```
+
+```hbs
+<TuiEditor
+  @value="# Hello World"
+  @onChange={{this.onChange}}
+  @plugins={{this.editorPlugins}}
+/>
+```
 
 ## Contributing
 
