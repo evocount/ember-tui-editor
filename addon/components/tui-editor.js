@@ -26,6 +26,15 @@ class TuiEditor extends Component {
     'value:setMarkdown:initialValue',
     'hooks',
     'plugins',
+    'previewHighlight',
+    'extendedAutolinks',
+    'customConvertor',
+    'placeholder:setPlaceholder',
+    'linkAttribute',
+    'customHTMLRenderer',
+    'referenceDefinition',
+    'customHTMLSanitizer',
+    'frontMatter',
   ];
 
   // gathers all the options to initialize TUI editor, respecting tuiOptions syntax
