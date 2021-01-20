@@ -1,12 +1,12 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-tui-editor',
+  name: require('./package').name,
 
   options: {
     babel: {
-      plugins: [ require('ember-auto-import/babel-plugin') ]
-    }
+      plugins: [require('ember-auto-import/babel-plugin')],
+    },
   },
 
   included(app) {
@@ -15,5 +15,5 @@ module.exports = {
     app.import('node_modules/codemirror/lib/codemirror.css');
     app.import('node_modules/@toast-ui/editor/dist/toastui-editor.css');
     app.import('node_modules/@toast-ui/editor/dist/toastui-editor-viewer.css');
-  }
+  },
 };

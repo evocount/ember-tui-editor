@@ -8,7 +8,6 @@ import { tracked } from '@glimmer/tracking';
 import importLocale from 'ember-tui-editor/utils/load-locale-file';
 
 export default class TuiEditor extends Component {
-
   @tracked editor = null;
 
   // here we use a syntax like <property>:<method>:<tui option> to update such property (optional)>
@@ -42,7 +41,7 @@ export default class TuiEditor extends Component {
   // with the {{did-update}} helper
   get tuiOptionsDescriptors() {
     return this.tuiOptions
-      .map(d => d.split(':'))
+      .map((d) => d.split(':'))
       .filter(([, tuiMethod]) => !!tuiMethod);
   }
 
