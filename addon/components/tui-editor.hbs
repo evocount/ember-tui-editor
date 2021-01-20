@@ -1,0 +1,9 @@
+<div {{did-insert this.setupEditor}} ...attributes>
+  {{yield}}
+</div>
+
+{{#if this.editor}}
+  {{#each this.tuiOptionsDescriptors as |desc|}}
+    {{did-update (fn this.updateOption desc) (get this.args (get desc 0))}}
+  {{/each}}
+{{/if}}
