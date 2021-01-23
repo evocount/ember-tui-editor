@@ -12,7 +12,7 @@
     @editType={{this.editType}}
     @value={{this.value}}
     @onChange={{fn (mut this.value)}}
-    @placeholder="Add some text here"/>
+    @placeholder={{this.placeholder}}/>
 
   <form>
     <div>
@@ -55,6 +55,11 @@
     <div>
       <label for="value">Value: </label>
       <Textarea @value={{this.value}} @rows="10" @id="value" />
+    </div>
+
+    <div>
+      <label for="height">Placeholder:</label>
+      <Input @value={{this.placeholder}} @id="placeholder" />
     </div>
   </form>
 </div>
