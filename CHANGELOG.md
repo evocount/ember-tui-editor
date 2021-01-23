@@ -11,6 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - …
 
+## [2.0.0] - 2021-01-23
+
+### Changed
+
+- Expose new TUI editor options
+- Allow customization of editor element
+- Use Glimmer component
+- Dependency updates
+
 ## [1.1.0] - 2020-06-02
 
 ### Changed
