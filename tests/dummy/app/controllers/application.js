@@ -10,4 +10,6 @@ export default class ApplicationController extends Controller {
   previewStyles = ['vertical', 'tab'];
   editTypes = ['markdown', 'wysiwyg'];
   placeholder = 'Add some text here';
+
+  show = true;
 }

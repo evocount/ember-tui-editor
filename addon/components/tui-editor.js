@@ -14,10 +14,9 @@ export default class TuiEditor extends Component {
   tuiOptions = [
     'previewStyle:changePreviewStyle',
     'editType:changeMode:initialEditType',
-    'height:height',
-    'minHeight:minHeight',
+    'height:setHeight',
+    'minHeight:setMinHeight',
     'language',
-    'useDefaultHTMLSanitizer',
     'useCommandShortcut',
     'usageStatistics',
     'toolbarItems',
@@ -30,11 +29,14 @@ export default class TuiEditor extends Component {
     'extendedAutolinks',
     'customConvertor',
     'placeholder:setPlaceholder',
-    'linkAttribute',
+    'linkAttributes',
     'customHTMLRenderer',
+    'customMarkdownRenderer',
     'referenceDefinition',
     'customHTMLSanitizer',
     'frontMatter',
+    'widgetRules',
+    'theme',
   ];
 
   // splits the options that have a tuiMethod to be used on the template
@@ -73,13 +75,18 @@ export default class TuiEditor extends Component {
         events: {
           load: (...args) => this.eventInvoked('onLoad', ...args),
           change: (...args) =>
-            this.eventInvoked('onChange', this.editor.getMarkdown(), ...args),
-          stateChange: (...args) => this.eventInvoked('onStateChange', ...args),
+            this.eventInvoked('onChange', this.editor?.getMarkdown(), ...args),
+          caretChange: (...args) => this.eventInvoked('onCaretChange', ...args),
           focus: (...args) => this.eventInvoked('onFocus', ...args),
           blur: (...args) => this.eventInvoked('onBlur', ...args),
         },
       })
     );
+  }
+
+  @action
+  teardownEditor() {
+    this.editor?.destroy();
   }
 
   // tests if an `actionName` function exists and calls it with the arguments if so
