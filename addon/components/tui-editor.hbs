@@ -1,4 +1,4 @@
-<div {{did-insert this.setupEditor}} ...attributes>
+<div {{did-insert this.setupEditor}} {{will-destroy this.teardownEditor}} ...attributes>
   {{yield}}
 </div>
 
