@@ -5,11 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [3.0.0] - 2021-07-28
 
 ### Changed
 
-- …
+- `@linkAttribute` argument renamed to `@linkAttributes`
+- `@onStateChange` action argument renamed to `@onCaretChange`
+- `@toolbarItems` no longer uses a "divider" item in the array. Instead pass in multiple arrays, and they will be divided in the UI.
+
+### Added
+
+- new `@theme` argument
+- new `@customMarkdownRenderer` argument
+- new `@widgetRules` argument
+- new `@onInit` action that provides the underlying "editor" instance to make more advanced operations
+
+### Removed
+
+- dropped support for IE 11
+- `@useDefaultHTMLSanitizer` argument was removed
 
 ## [2.0.0] - 2021-01-23
 

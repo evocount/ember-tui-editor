@@ -19,10 +19,7 @@ ember install ember-tui-editor
 ## Usage
 
 ```hbs
-<TuiEditor
-  @value="# Hello World"
-  @onChange={{this.onChange}}
-/>
+<TuiEditor @value='# Hello World' @onChange={{this.onChange}} />
 ```
 
 ### Properties
@@ -49,7 +46,7 @@ The following table lists some special properties (bound, different name) only:
 | --------------- | ---------------------------------------------- |
 | `onLoad`        | Emitted when editor is fully loaded            |
 | `onChange`      | Emitted when content changed                   |
-| `onStateChange` | Emitted when format changed by cursor position |
+| `onCaretChange` | Emitted when format changed by cursor position |
 | `onFocus`       | Emitted when editor gets focus                 |
 | `onBlur`        | Emitted when editor looses focus               |
 
@@ -75,7 +72,7 @@ export default MyComponent extends Component {
 
 ```hbs
 <TuiEditor
-  @value="# Hello World"
+  @value='# Hello World'
   @onChange={{this.onChange}}
   @plugins={{this.editorPlugins}}
 />

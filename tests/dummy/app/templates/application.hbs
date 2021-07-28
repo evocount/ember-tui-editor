@@ -5,14 +5,16 @@
     <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
   {{/let}}
 
-  <TuiEditor
-    @height={{this.height}}
-    @minHeight={{this.minHeight}}
-    @previewStyle={{this.previewStyle}}
-    @editType={{this.editType}}
-    @value={{this.value}}
-    @onChange={{fn (mut this.value)}}
-    @placeholder={{this.placeholder}}/>
+  {{#if this.show}}
+    <TuiEditor
+      @height={{this.height}}
+      @minHeight={{this.minHeight}}
+      @previewStyle={{this.previewStyle}}
+      @editType={{this.editType}}
+      @value={{this.value}}
+      @onChange={{fn (mut this.value)}}
+      @placeholder={{this.placeholder}}/>
+  {{/if}}
 
   <form>
     <div>
@@ -58,8 +60,13 @@
     </div>
 
     <div>
-      <label for="height">Placeholder:</label>
+      <label for="placeholder">Placeholder:</label>
       <Input @value={{this.placeholder}} @id="placeholder" />
+    </div>
+
+    <div>
+      <label for="show">Show</label>
+      <Input @id="show" @type="checkbox" @checked={{this.show}}/>
     </div>
   </form>
 </div>
