@@ -11,7 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `@linkAttribute` argument renamed to `@linkAttributes`
 - `@onStateChange` action argument renamed to `@onCaretChange`
-- `@useDefaultHTMLSanitizer` argument was removed
 - `@toolbarItems` no longer uses a "divider" item in the array. Instead pass in multiple arrays, and they will be divided in the UI.
 
 ### Added
@@ -23,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - dropped support for IE 11
+- `@useDefaultHTMLSanitizer` argument was removed
 
 ## [2.0.0] - 2021-01-23
 
