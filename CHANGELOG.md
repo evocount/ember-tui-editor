@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - new `@theme` argument
 - new `@customMarkdownRenderer` argument
 - new `@widgetRules` argument
+- new `@onInit` action that provides the underlying "editor" instance to make more advanced operations
 
 ### Removed
 

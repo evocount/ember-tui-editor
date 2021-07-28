@@ -82,6 +82,8 @@ export default class TuiEditor extends Component {
         },
       })
     );
+
+    this.eventInvoked('onInit', this.editor);
   }
 
   @action
