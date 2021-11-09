@@ -34,7 +34,7 @@
     "deploy:demo": "ember build --environment production && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages"
   },
   "dependencies": {
-    "@ember/render-modifiers": "^1.0.2",
+    "@ember/render-modifiers": "^1.0.2 || ^2.0.0",
     "@glimmer/component": "^1.0.3",
     "@glimmer/tracking": "^1.0.3",
     "@toast-ui/editor": "^3.0.0",
