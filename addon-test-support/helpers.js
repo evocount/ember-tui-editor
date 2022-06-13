@@ -1,16 +1,17 @@
 import { waitFor, fillIn } from '@ember/test-helpers';
 
-export async function fillInEditor(cssPathOrElement, value) {
-  let el;
+export async function fillInEditor(selector, value) {
+  let mainEl = await waitFor(`${selector} .toastui-editor-main`);
 
-  if (cssPathOrElement instanceof HTMLElement) {
-    el = cssPathOrElement;
+  let elPath;
+
+  if (mainEl.classList.contains('toastui-editor-ww-mode')) {
+    elPath = '.toastui-editor-ww-container [contenteditable] > :first-child';
   } else {
-    let elPath = `${cssPathOrElement} [contenteditable]`;
-
-    await waitFor(elPath);
-    el = document.querySelector(elPath);
+    elPath = '.toastui-editor-md-container [contenteditable]';
   }
+
+  let el = await waitFor(`${selector} ${elPath}`);
 
   await fillIn(el, value);
 }
