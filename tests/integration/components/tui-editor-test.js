@@ -38,4 +38,12 @@ module('Integration | Component | tui-editor', function (hooks) {
 
     assert.strictEqual(content, 'foo');
   });
+
+  test('it works with @viewer={{true}}', async function (assert) {
+    await render(hbs`
+      <TuiEditor data-test-editor @viewer={{true}} @value="# Hello World"/>
+    `);
+
+    assert.dom('.toastui-editor-toolbar').doesNotExist();
+  });
 });
