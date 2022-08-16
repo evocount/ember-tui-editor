@@ -69,7 +69,7 @@ export default class TuiEditor extends Component {
     await importLocale(this.language);
     const { Editor } = await import('@toast-ui/editor');
 
-    this.editor = new Editor(
+    this.editor = new Editor.factory(
       assign(this.options, {
         el: element,
         events: {
