@@ -1,6 +1,5 @@
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
-import { assign } from '@ember/polyfills';
 
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -70,7 +69,7 @@ export default class TuiEditor extends Component {
     const { Editor } = await import('@toast-ui/editor');
 
     this.editor = new Editor.factory(
-      assign(this.options, {
+      Object.assign(this.options, {
         el: element,
         events: {
           load: (...args) => this.eventInvoked('onLoad', ...args),
