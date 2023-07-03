@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.6] - 2023-06-04
+
+### Fixed
+
+- Fix `@language` argument ([f7751e7](https://github.com/evocount/ember-tui-editor/commit/f7751e7cc10f42656a32755ec35366214648c221))
+- Update `@toast-ui/editor` from `3.2.1` to `3.2.2`  ([3419d38](https://github.com/evocount/ember-tui-editor/commit/3419d387fa6fa04839fdd24b418d3252e2701afa))
+
 ## [3.0.5] - 2022-09-30
 
 ### Fixed
