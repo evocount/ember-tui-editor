@@ -1,8 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
-import { fillInEditor } from 'ember-tui-editor/test-support/helpers';
+import { render, settled, waitFor } from '@ember/test-helpers';
+import {
+  fillInEditor,
+  waitForEditor,
+} from 'ember-tui-editor/test-support/helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { set } from '@ember/object';
 
 module('Integration | Component | tui-editor', function (hooks) {
   setupRenderingTest(hooks);
@@ -45,5 +49,15 @@ module('Integration | Component | tui-editor', function (hooks) {
     `);
 
     assert.dom('.toastui-editor-toolbar').doesNotExist();
+  });
+
+  test('@language option loads correct locale', async function (assert) {
+    await render(hbs`
+      <TuiEditor data-test-editor @language="fr" @value="# Hello World"/>
+    `);
+
+    await waitForEditor('[data-test-editor]', 'foo');
+
+    assert.dom('[aria-label=Écrire]').exists({ count: 1 });
   });
 });

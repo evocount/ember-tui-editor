@@ -66,7 +66,7 @@ export default class TuiEditor extends Component {
 
   @action
   async setupEditor(element) {
-    await importLocale(this.language);
+    await importLocale(this.options.language);
     const { Editor } = await import('@toast-ui/editor');
 
     this.editor = new Editor.factory(

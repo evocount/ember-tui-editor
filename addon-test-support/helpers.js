@@ -1,6 +1,6 @@
 import { waitFor, fillIn } from '@ember/test-helpers';
 
-export async function fillInEditor(selector, value) {
+export async function waitForEditor(selector) {
   let mainEl = await waitFor(`${selector} .toastui-editor-main`);
 
   let elPath;
@@ -11,7 +11,11 @@ export async function fillInEditor(selector, value) {
     elPath = '.toastui-editor-md-container [contenteditable]';
   }
 
-  let el = await waitFor(`${selector} ${elPath}`);
+  return await waitFor(`${selector} ${elPath}`);
+}
+
+export async function fillInEditor(selector, value) {
+  let el = await waitForEditor(selector);
 
   await fillIn(el, value);
 }
