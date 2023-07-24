@@ -5,7 +5,7 @@ module.exports = {
 
   options: {
     babel: {
-      plugins: [require('ember-auto-import/babel-plugin')],
+      plugins: [require.resolve('ember-auto-import/babel-plugin')],
     },
   },
 
