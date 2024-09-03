@@ -10,6 +10,7 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'ember-source': '~3.16.0',
+            'ember-in-element-polyfill': '^1.0.1',
           },
         },
       },
