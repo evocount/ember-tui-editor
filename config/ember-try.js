@@ -9,8 +9,9 @@ module.exports = async function () {
         name: 'ember-lts-3.16',
         npm: {
           devDependencies: {
-            'ember-source': '~3.16.0',
             'ember-in-element-polyfill': '^1.0.1',
+            'ember-maybe-in-element': '2.0.3',
+            'ember-source': '~3.16.0',
           },
         },
       },
