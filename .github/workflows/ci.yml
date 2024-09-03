@@ -59,9 +59,8 @@ jobs:
         try-scenario:
           - ember-lts-3.16
           - ember-lts-3.28
-          # TODO: Ember > 4 requires a dependency on ember-auto-import@~2.
-          #       This is a breaking change and should be done in a follow-up.
-          # - ember-lts-4.12
+          - ember-lts-4.12
+          # TODO: Run tests with Ember v5
           # - ember-lts-5.4
           # - ember-release
           # - ember-beta

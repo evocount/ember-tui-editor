@@ -26,7 +26,12 @@ module.exports = async function () {
       {
         name: 'ember-lts-4.12',
         npm: {
+          dependencies: {
+            'ember-auto-import': '^2.7.4',
+          },
           devDependencies: {
+            'ember-cli': '~3.28.0',
+            'ember-qunit': '^6.2.0',
             'ember-source': '~4.12.0',
           },
         },
