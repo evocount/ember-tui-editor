@@ -51,7 +51,7 @@
     "@babel/eslint-parser": "^7.25.1",
     "@babel/plugin-proposal-decorators": "^7.24.7",
     "@ember/optional-features": "^2.1.0",
-    "@ember/test-helpers": "^3.3.1",
+    "@ember/test-helpers": "^4.0.4",
     "@embroider/test-setup": "^4.0.0",
     "@nullvoxpopuli/ember-composable-helpers": "^5.2.5",
     "broccoli-asset-rev": "^3.0.0",
@@ -93,7 +93,8 @@
     "webpack": "^5.95.0"
   },
   "peerDependencies": {
-    "ember-source": ">= 4.0.0"
+    "ember-source": ">= 3.28",
+    "@ember/test-helpers": "^2.9.4 || ^3.2.1 || ^4.0.2"
   },
   "engines": {
     "node": ">= 18"
