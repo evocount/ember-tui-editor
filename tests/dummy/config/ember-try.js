@@ -12,6 +12,7 @@ module.exports = async function () {
           devDependencies: {
             'ember-source': '~3.28',
             '@ember/test-helpers': '^2.9.4',
+            'ember-prism': '^0.13.0',
           },
         },
       },
