@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2024-10-16
+
+### Changed
+
+- use `ember-modifier` instead of `@ember/render-modifiers` (deprecated) (see [no-at-ember-render-modifiers](https://github.com/ember-template-lint/ember-template-lint/blob/master/docs/rule/no-at-ember-render-modifiers.md))
+- removed usage of [ember-power-select](https://github.com/cibernox/ember-power-select) on demo app
+- updated project to latest dependencies
+
+### Removed
+
+- dropped support for ember < 3.28
+
 ## [3.0.10] - 2023-07-24
 
 ### Fixed
