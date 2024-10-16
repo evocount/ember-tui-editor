@@ -14,6 +14,7 @@ module.exports = async function () {
             '@ember/test-helpers': '^2.9.4',
             'ember-qunit': '^6.2.0',
             'ember-prism': '^0.13.0',
+            'ember-resolver': '^8.1.0',
           },
         },
       },
