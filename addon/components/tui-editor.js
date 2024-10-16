@@ -1,12 +1,22 @@
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
+import { scheduleTask, runTask } from 'ember-lifeline';
 
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { modifier } from 'ember-modifier';
 
 import importLocale from 'ember-tui-editor/utils/load-locale-file';
 
 export default class TuiEditor extends Component {
+  setupModifier = modifier((element) => {
+    // we use this trick to decouple the autotracking mechanism
+    // from triggering the modifier when any component arg changes
+    runTask(this, () => this.setupEditor(element), 1);
+
+    return () => this.teardownEditor();
+  });
+
   @tracked editor = null;
 
   // here we use a syntax like <property>:<method>:<tui option> to update such property (optional)>
@@ -39,7 +49,7 @@ export default class TuiEditor extends Component {
   ];
 
   // splits the options that have a tuiMethod to be used on the template
-  // with the {{did-update}} helper
+  // with the {{did-update-helper}} helper
   get tuiOptionsDescriptors() {
     return this.tuiOptions
       .map((d) => d.split(':'))
@@ -79,7 +89,7 @@ export default class TuiEditor extends Component {
           focus: (...args) => this.eventInvoked('onFocus', ...args),
           blur: (...args) => this.eventInvoked('onBlur', ...args),
         },
-      })
+      }),
     );
 
     this.eventInvoked('onInit', this.editor);
@@ -92,7 +102,9 @@ export default class TuiEditor extends Component {
 
   // tests if an `actionName` function exists and calls it with the arguments if so
   eventInvoked(actionName, ...args) {
-    this.args[actionName]?.(...args);
+    scheduleTask(this, 'actions', function () {
+      this.args[actionName]?.(...args);
+    });
   }
 
   @action
@@ -108,7 +120,7 @@ export default class TuiEditor extends Component {
     } else {
       assert(
         `Editor instance should be have a function '${tuiMethod}' but found ${this.editor[tuiMethod]} instead.`,
-        !!this.editor[tuiMethod]
+        !!this.editor[tuiMethod],
       );
       this.editor[tuiMethod].call(this.editor, value);
     }

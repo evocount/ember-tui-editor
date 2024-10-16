@@ -1,5 +1,10 @@
 <div class="main">
-  <h2 id="title"><a href="https://github.com/evocount/ember-tui-editor">Ember-tui-editor</a> Demo</h2>
+  <h2 id="title">
+    <a href="https://github.com/evocount/ember-tui-editor">
+      Ember-tui-editor
+    </a>
+    Demo
+  </h2>
 
   {{#let (get-code-snippet "tui-editor.hbs") as |snippet|}}
     <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
@@ -12,61 +17,89 @@
       @previewStyle={{this.previewStyle}}
       @editType={{this.editType}}
       @value={{this.value}}
-      @onChange={{fn (mut this.value)}}
-      @placeholder={{this.placeholder}}/>
+      @onChange={{set this "value"}}
+      @placeholder={{this.placeholder}}
+    />
   {{/if}}
 
   <form>
     <div>
       <label for="height">Height:</label>
-      <Input @value={{this.height}} @id="height" />
+      <input
+        id="height"
+        type="text"
+        value={{this.height}}
+        {{on "input" (pick "target.value" (set this "height"))}}
+      />
     </div>
 
     <div>
       <label for="minHeight">Min Height:</label>
-      <Input @value={{this.minHeight}} @id="minHeight" />
+      <input
+        id="minHeight"
+        type="text"
+        value={{this.minHeight}}
+        {{on "input" (pick "target.value" (set this "minHeight"))}}
+      />
     </div>
 
     <div>
       <label for="previewStyle">Preview style:</label>
-      <PowerSelect
-        @options={{this.previewStyles}}
-        @selected={{this.previewStyle}}
-        @onChange={{fn (mut this.previewStyle)}}
-        @searchEnabled={{false}}
-        as |item|
+      <select
+        id="previewStyle"
+        {{on "input" (pick "target.value" (set this "previewStyle"))}}
       >
-        {{item}}
-      </PowerSelect>
+        {{#each this.previewStyles as |item|}}
+          <option value={{item}} selected={{eq item this.previewStyle}}>
+            {{item}}
+          </option>
+        {{/each}}
+      </select>
     </div>
 
     <div>
       <label for="editType">Edit type: </label>
-      <PowerSelect
+      <select
         id="editType"
-        @options={{this.editTypes}}
-        @selected={{this.editType}}
-        @onChange={{fn (mut this.editType)}}
-        @searchEnabled={{false}}
-        as |item|
+        {{on "input" (pick "target.value" (set this "editType"))}}
       >
-        {{item}}
-      </PowerSelect>
+        {{#each this.editTypes as |item|}}
+          <option value={{item}} selected={{eq item this.editType}}>
+            {{item}}
+          </option>
+        {{/each}}
+      </select>
     </div>
 
     <div>
       <label for="value">Value: </label>
-      <Textarea @value={{this.value}} @rows="10" @id="value" />
+      <textarea
+        rows="10"
+        id="value"
+        type="text"
+        value={{this.value}}
+        {{on "input" (pick "target.value" (set this "value"))}}
+      ></textarea>
     </div>
 
     <div>
       <label for="placeholder">Placeholder:</label>
-      <Input @value={{this.placeholder}} @id="placeholder" />
+      <input
+        id="placeholder"
+        type="text"
+        value={{this.placeholder}}
+        {{on "input" (pick "target.value" (set this "placeholder"))}}
+      />
     </div>
 
     <div>
       <label for="show">Show</label>
-      <Input @id="show" @type="checkbox" @checked={{this.show}}/>
+      <input
+        id="show"
+        type="checkbox"
+        checked={{this.show}}
+        {{on "input" (pick "target.checked" (set this "show"))}}
+      />
     </div>
   </form>
 </div>

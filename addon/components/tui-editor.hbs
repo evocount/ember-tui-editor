@@ -1,13 +1,12 @@
-<div
-  {{did-insert this.setupEditor}}
-  {{will-destroy this.teardownEditor}}
-  ...attributes
->
+<div {{this.setupModifier}} ...attributes>
   {{yield}}
 </div>
 
 {{#if this.editor}}
   {{#each this.tuiOptionsDescriptors as |desc|}}
-    {{did-update (fn this.updateOption desc) (get this.args (get desc 0))}}
+    {{did-update-helper
+      (fn this.updateOption desc)
+      (get this.args (get desc 0))
+    }}
   {{/each}}
 {{/if}}

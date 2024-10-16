@@ -1,12 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, settled, waitFor } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import {
   fillInEditor,
   waitForEditor,
 } from 'ember-tui-editor/test-support/helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { set } from '@ember/object';
 
 module('Integration | Component | tui-editor', function (hooks) {
   setupRenderingTest(hooks);
@@ -24,7 +23,7 @@ module('Integration | Component | tui-editor', function (hooks) {
 
     await fillInEditor('[data-test-editor]', 'foo');
 
-    assert.equal(content, 'foo');
+    assert.strictEqual(content, 'foo');
   });
 
   test('it works with @editType="wysiwyg"', async function (assert) {

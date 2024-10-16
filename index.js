@@ -14,7 +14,7 @@ module.exports = {
 
     app.import('node_modules/@toast-ui/editor/dist/toastui-editor.css');
     app.import(
-      'node_modules/@toast-ui/editor/dist/theme/toastui-editor-dark.css'
+      'node_modules/@toast-ui/editor/dist/theme/toastui-editor-dark.css',
     );
     app.import('node_modules/@toast-ui/editor/dist/toastui-editor-viewer.css');
   },
