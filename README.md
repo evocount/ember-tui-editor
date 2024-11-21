@@ -78,6 +78,19 @@ export default MyComponent extends Component {
 />
 ```
 
+## Testing
+
+A test helper `fillInEditor` is exported from `ember-tui-editor/test-support/helpers`, which could be used in integration and acceptance tests:
+
+```js
+import { fillInEditor } from 'ember-tui-editor/test-support/helpers';
+
+await fillInEditor(
+  '[data-test-selector-targeting-tui-editor-component]',
+  'Text entered into the editor'
+);
+```
+
 ## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
